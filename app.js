@@ -1,29 +1,4 @@
-// function getAlienStats(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-// function getAlienDecimalStats(min, max) {
-//     return Math.floor(Math.random() * (max - min) + min);
-// }
-// console.log(getAlienStats(3,6))
-// console.log(getAlienStats(2,4))
-// console.log(getAlienDecimalStats(.6,.8))
-//   class Hamster{
-//     constructor  (name){
-//       this.owner="";
-//       this.name=name;
-//       this.price=15;
-//     }
-// wheelRun(){
-// console.log("squeak squeak")
-// }
-// eatFood(){
-//   console.log("nibble nibble")
 
-// }
-// getPrice(){
-// return this.price
-// }
-//}
 
 class HeroShip {
     constructor() {
@@ -51,41 +26,37 @@ class AlienShip {
 }
 
 let allAlienShips = []
-// for (counter = 0; counter <= 5; counter++){
-//     allAlienShips.push(new AlienShip ())
-// }
 
 let alienShip1 = new AlienShip("Orcs are Us")
 allAlienShips.push(alienShip1)
 let alienShip2 = new AlienShip("The Zimvader")
 allAlienShips.push(alienShip2)
-
 let alienShip3 = new AlienShip("Arbitor Strong")
 allAlienShips.push(alienShip3)
-// let alienShip4 = new AlienShip("Cyborgy Express")
-// allAlienShips.push(alienShip4)
-// let alienShip5 = new AlienShip("Scalien Scaler")
-// allAlienShips.push(alienShip5)
-// let alienShip6 = new AlienShip("Supreme Beam")
-// allAlienShips.push(alienShip6)
-// console.log(allAlienShips)
+let alienShip4 = new AlienShip("Cyborgy Express")
+allAlienShips.push(alienShip4)
+let alienShip5 = new AlienShip("Scalien Scaler")
+allAlienShips.push(alienShip5)
+let alienShip6 = new AlienShip("Supreme Beam")
+allAlienShips.push(alienShip6)
+console.log(allAlienShips)
 
 
 
 let currentEnemy = allAlienShips[0];
-let heroShipShoot = (currentEnemy) => {
+let heroShipShoot = (Enemy) => {
     let aimChance = Math.random()
     if (aimChance < theHeroShip.accuracy) {
-        currentEnemy.hull = currentEnemy.hull - theHeroShip.hitPoints;
-        console.log(`Direct hit: The enemys current hull is ${currentEnemy.hull}`)
-              if (currentEnemy.hull < 0){
+        Enemy.hull = Enemy.hull - theHeroShip.hitPoints;
+        console.log(`Direct hit: The enemys current hull is ${Enemy.hull}`)
+              if (Enemy.hull < 0){
                 allAlienShips.shift() 
-                console.log(currentEnemy)
+                console.log(Enemy)
                 if (allAlienShips.length === 0){
                     console.log('you win')
                 }      
-            if (currentEnemy.hull >= 1){
-                console.log(currentEnemy)
+            if (Enemy.hull >= 1){
+                console.log(Enemy)
                  alienShipShoot(theHeroShip)
                   
             }
@@ -101,6 +72,7 @@ let alienShipShoot = (currentAlienShip) => {
     console.log(`alien ship shoots`)
     let aimAccuracy = Math.random()
     if (aimAccuracy < currentAlienShip.accuracy) {
+        alert("")
         console.log(`Direct hit on ${theHeroShip.name}`)
         theHeroShip.hull -= currentAlienShip.hitPoints;
         console.log(theHeroShip)
@@ -123,30 +95,27 @@ let alienShipShoot = (currentAlienShip) => {
     
   
 heroShipShoot(allAlienShips[0])
-// let myHeroShip = document.createElement('div')
-// myHeroShip.textContent = "uss Assembly"
-// let nameDiv = document.querySelector('nameBox')
-// nameDiv.appendChild(myHeroShip)
+
 window.onload = function() { 
     alert("Welcome to: Save the World")
     
-    alert("You get to shoot the first alien ship - If the ship survives, it attacks you - If you survive, you attack the ship again - If it survives, it attacks you again, Etc. - If you destroy the ship, you have the option to ATTACK the next ship or to RETREAT.")
-    alert("You can retreat at any time, but that means the game is over. - The only way to win is to destroy all six aliens. If you are destroyed, Its GAME OVER.")
-    alert("You are moving through space when an alien ship approaches")
+    alert("A few rules: You get to shoot the first alien ship! - If the ships hull isn't completely destroyed, it gets a turn to shoot at you. If you survive a battle with a ship, you get a chance to destroy the next one or retreat.")
+    alert("You have the option to retreat at any time, but that means the game is over. - The only way to win this game is to stay alive and destroy all six space alien ships. If you are destroyed, Its GAME OVER!")
+    alert("Do you have what it takes? Lets see what you're made of! Her comes the first ship")
 
 
     
-    //PROMPT TO MAKE FIRST ATTACK
+    
     let input = prompt("Would you like to ATTACK, or RETREAT?")
-    if (input == "ATTACK"){
-        alert("The uss Assembly Aims and FIRES")
+    if (input == "ATTACK" || "attack"){
+        alert("The Uss Assembly fires")
         alienShipShoot(theHeroShip)
     }
     if (input !== "ATTACK"){
         alert("the fate of the Universe is in your hands! Are you really going to run away?")
         let retreatInput= prompt("Are you sure you want to RETREAT? Y or N")
         if(retreatInput == "Y" || "y"){
-            alert("The Aliens have taken over our whole solar system! it GAME OVER!")
+            alert("The Aliens have taken over our whole solar system! It's GAME OVER!")
         }else{
             heroShipShoot(allAlienShips[0])
         }
@@ -184,3 +153,7 @@ window.onload = function() {
 //  }
 // }
 //  gamePlay()
+// let myHeroShip = document.createElement('div')
+// myHeroShip.textContent = "uss Assembly"
+// let nameDiv = document.querySelector('nameBox')
+// nameDiv.appendChild(myHeroShip)
